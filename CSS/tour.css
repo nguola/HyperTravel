@@ -172,6 +172,7 @@
     transition: 0.2s ease-in-out;
     background-color: white;
     box-shadow: 10px 7px 10px 3px rgba(255,255,255,0.66);
+    border: none;
 }
 
 .footer .popular_img:first-child {
@@ -290,15 +291,22 @@
     padding: 50px 0px 10px 0px;
 }
 .introduce{
-    display: flex;  
-    margin-left: 5%;
-    margin-bottom: 1%;
-    border-top: 1px solid cyan;
-    border-bottom: 1px solid cyan;
-    margin-right: 7%;
-   font-weight: bolder;
-   font-size: x-large;
-    
+    width: 100%;
+    display: flex;   
+    justify-content: center;
+    height: 80px;
+    line-height: 80px;
+    background-color: beige;
+    justify-content: space-around;
+}
+.typetour{
+    font-size: x-large;
+    text-decoration: none;
+    color: #000;
+    background-color:aqua;
+}
+.typetour:hover{
+    transform: scale(1.12);
 }
 .video{
     border-top: 2px solid black;

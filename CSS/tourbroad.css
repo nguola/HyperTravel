@@ -225,7 +225,13 @@ body{
 .img-backgroud{
     width: 350px;
     height: 252px;
-   background-color: rgb(170, 170, 233)
+   background-color: rgb(170, 170, 233);
+   transition: 0.3s ease-in;
+}
+.img-backgroud{
+    transform: scale(1.15);
+    opacity: 50%;
+    cursor: pointer;
 }
 .Question{
     width: 350px;
