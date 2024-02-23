@@ -1,41 +1,67 @@
-const showMenu = document.getElementsByClassName('showmenu')
+var slides = document.querySelectorAll('.slide')
+var manual_btn = document.querySelectorAll('.manual_btn')
+var auto_btn = document.querySelectorAll('.auto_btn')
+const back_top = document.querySelector('.go_back_button')
+const top_content = document.getElementById('top_content')
+const show_menu_button = document.getElementById('showmenu')
+const menu_li = document.getElementsByClassName('mainmenu')
+const menu = document.querySelector('.mainmenu')
 
-const back_top = document.querySelector('.back_top_page')
-const topmenu = document.querySelector('.header')
-const menu = document.querySelector('.header .nav')
+var current = 0
 
-var check = true
+var manualNav = function (manual, pre) {
+    slides.forEach((slide) => {
+        slide.classList.remove('pre')
 
-window.onscroll = function() {scrollfunction()};
+        manual_btn.forEach((btn) => {
+            btn.classList.remove('pre')
 
-function scrollfunction(){
-    if(document.documentElement.scrollTop > 50) {
-        topmenu.style.position = "fixed";
-        topmenu.style.opacity = '100%'
-        topmenu.style.height = '65px'
-        menu.style.display = 'none';
-        check = false;
+            auto_btn.forEach((a_btn) => {
+                a_btn.classList.remove('pre')
+            })
+        })
+    })
+
+    slides[pre].classList.remove('active')
+    manual_btn[pre].classList.remove('active')
+    auto_btn[pre].classList.remove('active')
+
+    slides[pre].classList.add('pre')
+    manual_btn[pre].classList.add('pre')
+    auto_btn[pre].classList.add('pre')
+
+    slides[manual].classList.add('active')
+    manual_btn[manual].classList.add('active')
+    auto_btn[manual].classList.add('active')
+}
+
+manual_btn.forEach((btn, i) => {
+    slides[current].style.amination = ''
+
+    btn.addEventListener('click', () => {
+        manualNav(i, current)
+        current = i
+    })
+})
+
+setInterval(() => {
+    slides[current].style.amination = ''
+    
+    var tmp = current
+
+    if(current == slides.length - 1)
+        current = 0
+    else
+        current++
+
+    manualNav(current, tmp)
+}, 12000);
+
+window.onscroll = function (){
+    if(document.documentElement.scrollTop > 150) {
         back_top.style.display = "block";
+
     } else {
-        topmenu.style.position = "absolute";
-        topmenu.style.opacity = '80%'
-        topmenu.style.height = '150px'
-        menu.style.display = 'flex';
-        check = true;
         back_top.style.display = "none";
     }
 }
-
-
-showMenu[0].addEventListener('click', ()=>{
-    if(check){
-        topmenu.style.height = '65px'
-        menu.style.display = 'none';
-        check = false;
-    }
-    else{
-        topmenu.style.height = '150px'
-        menu.style.display = 'flex';
-        check = true;
-    }
-})
