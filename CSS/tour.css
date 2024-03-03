@@ -299,6 +299,10 @@
     background-color: beige;
     justify-content: space-around;
 }
+.introduce a{
+    border-radius: 2px;
+    border: none;
+}
 .typetour{
     font-size: x-large;
     text-decoration: none;
